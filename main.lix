@@ -1,4 +1,4 @@
-# This file is for formalizing Professor Terrence Tao's Analysis I.
+# This file is for formalizing Professor Terence Tao's Analysis I.
 
 import "chap2_natural_numbers.lix"
 import "chap3_set_theory.lix"
