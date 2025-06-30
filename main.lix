@@ -33,10 +33,41 @@ know forall x N, y N:
 # keyword "exist_prop" is used to declare a existential proposition.
 
 # Proposition 2.1.11: Suppose we have property P(n) that is true for n = 0, and that P(n) implies P(n+1) for all n. Then P(n) is true for all n.
-prove:  # keyword "prove" is used to open a new environment. Anything inside the "prove" environment won't affect the outside environment.
-
+# prove:  # keyword "prove" is used to open a new environment. Anything inside the "prove" environment won't affect the outside environment.
 
 # Assumption 2.6 There exists a number system N. Set N is built-in.
 
 # Proposition 2.1.16 Recursive definition. The definition of recursion in this book is sort of confusing and informal because f(n)(a_{n}) is defined by a_{n}, but what is a_{n}? A sequence is not a set, because there might exists equal elements in a sequence. If a sequence is a function from N to N, then why do we need a function f(n) to define a function from N to N to make sure f(n)(a_{n}) = a_{n}? a_{n} itself is already that function which satisfies the condition a_{n} = a_{n}.
 
+# Addition of natural numbers.
+know forall x N, y N:
+    (x + y) + 1 = (x + 1) + y
+
+know forall x N:
+    0 + x = x
+
+# n + 0 = n
+
+# For any natural number n, n + (m++) = (n + m)++
+
+# Addition is commutative
+
+# Cancellation law for addition
+
+prop is_positive_natural_number(n N):
+    n != 0
+
+# Proposition 2.2.8: If a is positive, b is natural number, then a + b is positive.
+
+# Corollary 2.2.9: If a and b are natural numbers such that a + b = 0, then a = 0 and b = 0.
+
+# Lemma 2.2.10: If a is positive, then there exists exactly one natural number b such that b + 1 = a.
+
+# Proposition 2.2.11: If n and m are natural numbers. We say n is greater than or equal to m, written n >= m, if n = m + k for some natural number k. We say n is strictly greater than m, written n > m, if n >= m and n != m.
+
+# Definition 2.3.1 multiplication of natural numbers.
+know forall x N:
+    0 * x = 0
+
+know forall x N, y N:
+    (x + 1) * y = x * y + y
