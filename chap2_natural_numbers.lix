@@ -2,7 +2,7 @@
 
 # Axiom 2.1 0 is a natural number.
 # The fact that literals are symbols for natural numbers within the set of natural numbers is built-in.
-# N, Z, Q, R, C are built-in sets: the set of natural numbers, integers, rational numbers, real numbers, and complex numbers. Some of their properties are built-in, but Litex is flexible enough to allow the user to define and derive their own properties.
+# N, Z, Q, R, C are built-in sets: the set of natural numbers, integers, rational numbers, real numbers, and complex numbers. Some of their properties are built-in, but Litex is flexible enough to allow the user to define and derive their own properties without any problem.
 0 $in N # This is a factual statement. Its output is true.
 
 # Axiom 2.2 If n is a natural number, then the successor of n is also a natural number.
