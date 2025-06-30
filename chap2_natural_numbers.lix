@@ -1,0 +1,71 @@
+# Chapter 2: Starting from the beginning: the natural numbers
+
+# Axiom 2.1 0 is a natural number.
+# The fact that literals are symbols for natural numbers within the set of natural numbers is built-in.
+# N, Z, Q, R, C are built-in sets: the set of natural numbers, integers, rational numbers, real numbers, and complex numbers. Some of their properties are built-in, but Litex is flexible enough to allow the user to define and derive their own properties.
+0 $in N # This is a factual statement. Its output is true.
+
+# Axiom 2.2 If n is a natural number, then the successor of n is also a natural number.
+know forall x N:
+    x + 1 $in N
+
+# Definition 2.1.3, Proposition 2.1.4, Example 2.1.5, Proposition 2.1.6, Example 2.1.7, Proposition 2.1.8 are builtin.
+0 + 1 = 1
+3 $in N
+4 != 0
+2 != 6
+
+# Axiom 2.3 0 is not the successor of any natural number.
+know forall x N:
+    0 != x + 1
+
+# Axiom 2.4 If two natural numbers are equal, iff their successors are equal.
+know forall x N, y N:
+    x != y
+    iff:
+        x + 1 != y + 1
+
+# Axiom 2.5 Principle of mathematical induction.
+# prove_by_induction is a built-in function that takes a predicate and a natural number and returns true if the predicate is true for all natural numbers up to and including the natural number.
+# The user actually can use "prove_by_induction" + "there exists the smallest natural number" to prove the principle of mathematical induction. In this case, he does not need to use the builtin keyword "prove_by_induction" to use "prove_by_induction" to prove correctness of a statement.
+# keyword "exist_prop" is used to declare a existential proposition.
+
+# Proposition 2.1.11: Suppose we have property P(n) that is true for n = 0, and that P(n) implies P(n+1) for all n. Then P(n) is true for all n.
+# prove:  # keyword "prove" is used to open a new environment. Anything inside the "prove" environment won't affect the outside environment.
+
+# Assumption 2.6 There exists a number system N. Set N is built-in.
+
+# Proposition 2.1.16 Recursive definition. The definition of recursion in this book is sort of confusing and informal because f(n)(a_{n}) is defined by a_{n}, but what is a_{n}? A sequence is not a set, because there might exists equal elements in a sequence. If a sequence is a function from N to N, then why do we need a function f(n) to define a function from N to N to make sure f(n)(a_{n}) = a_{n}? a_{n} itself is already that function which satisfies the condition a_{n} = a_{n}.
+
+# Addition of natural numbers.
+know forall x N, y N:
+    (x + y) + 1 = (x + 1) + y
+
+know forall x N:
+    0 + x = x
+
+# n + 0 = n
+
+# For any natural number n, n + (m++) = (n + m)++
+
+# Addition is commutative
+
+# Cancellation law for addition
+
+prop is_positive_natural_number(n N):
+    n != 0
+
+# Proposition 2.2.8: If a is positive, b is natural number, then a + b is positive.
+
+# Corollary 2.2.9: If a and b are natural numbers such that a + b = 0, then a = 0 and b = 0.
+
+# Lemma 2.2.10: If a is positive, then there exists exactly one natural number b such that b + 1 = a.
+
+# Proposition 2.2.11: If n and m are natural numbers. We say n is greater than or equal to m, written n >= m, if n = m + k for some natural number k. We say n is strictly greater than m, written n > m, if n >= m and n != m.
+
+# Definition 2.3.1 multiplication of natural numbers.
+know forall x N:
+    0 * x = 0
+
+know forall x N, y N:
+    (x + 1) * y = x * y + y
