@@ -3,13 +3,14 @@
 # Axiom 2.1 0 is a natural number.
 # The fact that literals are symbols for natural numbers within the set of natural numbers is built-in.
 # N, Z, Q, R, C are built-in sets: the set of natural numbers, integers, rational numbers, real numbers, and complex numbers. Some of their properties are built-in, but Litex is flexible enough to allow the user to define and derive their own properties without any problem.
+
 0 $in N # This is a factual statement. Its output is true.
 
 # Axiom 2.2 If n is a natural number, then the successor of n is also a natural number.
 know forall x N:
     x + 1 $in N
 
-# Definition 2.1.3, Proposition 2.1.4, Example 2.1.5, Proposition 2.1.6, Example 2.1.7, Proposition 2.1.8 are builtin.
+# examples:
 0 + 1 = 1
 3 $in N
 4 != 0
@@ -28,7 +29,25 @@ know forall x N, y N:
 # Axiom 2.5 Principle of mathematical induction.
 # prove_by_induction is a built-in function that takes a predicate and a natural number and returns true if the predicate is true for all natural numbers up to and including the natural number.
 # The user actually can use "prove_by_induction" + "there exists the smallest natural number" to prove the principle of mathematical induction. In this case, he does not need to use the builtin keyword "prove_by_induction" to use "prove_by_induction" to prove correctness of a statement.
-# keyword "exist_prop" is used to declare a existential proposition.
+
+# define a random proposition
+prop random_proposition(n N)
+
+# know it satisfies the condition of the principle of mathematical induction
+know:
+    $random_proposition(0)
+    forall n N:
+        $random_proposition(n)
+        then:
+            $random_proposition(n + 1)
+
+# use "prove_by_math_induction" to prove random_proposition is true for all natural numbers larger than 0
+prove_by_math_induction random_proposition 0
+
+forall n N:
+    n >= 0
+    then:
+        $random_proposition(n)
 
 # Proposition 2.1.11: Suppose we have property P(n) that is true for n = 0, and that P(n) implies P(n+1) for all n. Then P(n) is true for all n.
 # prove:  # keyword "prove" is used to open a new environment. Anything inside the "prove" environment won't affect the outside environment.

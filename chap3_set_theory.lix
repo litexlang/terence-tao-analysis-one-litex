@@ -60,8 +60,21 @@ prove:
             then:
                 x $in s
     
-# TODO: Axiom 3.6 solves the problem of exist and only exist. But it is second-order logic.
+# TODO: Axiom 3.6 solves the problem of exist and only exist. But it is second-order logic. Since early versions of Litex does not support second-order logic for user, Litex will make it as built-in.
 # Axiom 3.6: 
 
 # Axiom 3.7: There exists a set N whose elements have properties defined in chapter 2.
 # N is built-in in Litex. Most of the properties of N are also built-in. The user can also define his own properties of N easily.
+
+# Axiom 3.8 is wrong because it leads to Russell's paradox.
+
+# Axiom 3.9 (Regularity) If A is a non-empty set, then there is at least one element of A that is either not a set, or is disjoint from A
+prop is_disjoint_from(A obj, B set):
+    A $in set
+    forall x A:
+        not $in(x, B)
+
+exist_prop x A st any_non_empty_set_has_item_that_is_not_a_set_or_is_disjoint_from_A(A set):
+    or:
+        not $in(x, set) # "x is a set" is written as $in(x, set)
+        $is_disjoint_from(x, A)

@@ -1,4 +1,5 @@
 # This file is for formalizing Professor Terence Tao's Analysis I.
+# Some of the results in this book are built-in in Litex, because they are very basic and common in math. Others are formalized in separate files.
 
 import "chap2_natural_numbers.lix"
 import "chap3_set_theory.lix"
