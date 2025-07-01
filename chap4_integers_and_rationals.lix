@@ -10,24 +10,24 @@ Z $in set # Z is a set
 forall x N:
     x $in Z
 
-forall x Z, y Z, a Z, b Z:
+forall x, y, a, b Z:
     x - y + a - b = (x + a) - (y + b)
 
-forall x Z, y Z:
+forall x, y Z:
     x - y = x + (-y)
 
 forall x Z:
     x + (-x) = 0
 
-forall x Z:
+forall x Z: # 0 is the additive identity
     x * 0 = 0
 
 # associative law for addition
-forall x Z, y Z, z Z:
+forall x, y, z Z:
     (x + y) + z = x + (y + z)
 
 # associative law for multiplication
-forall x Z, y Z, z Z:
+forall x, y, z Z:
     (x * y) * z = x * (y * z)
 
 # distributive law
