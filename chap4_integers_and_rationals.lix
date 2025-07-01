@@ -10,7 +10,9 @@ Z $in set # Z is a set
 forall x N:
     x $in Z
 
-forall x, y, a, b Z:
+# The following properties about Z are true for real numbers. Since integers are real numbers by builtin-rules automatically, the following facts are all true.
+
+forall x, y, a, b Z: # this is syntax sugar for forall x Z, y Z, a Z, b Z:
     x - y + a - b = (x + a) - (y + b)
 
 forall x, y Z:
@@ -61,3 +63,33 @@ not $in(-1, N)
 $given_int_is_reverse_of_nat(-1)
 have t st $given_int_is_reverse_of_nat(-1)
 t + (-1) = 0
+
+# The rationals
+
+# proved by builtin rules for *, +, -, /
+forall a, b, c, d R:
+    b != 0
+    d != 0
+    then:
+        a / b + c / d = (a * d + b * c) / (b * d)
+
+forall a, b Q:
+    a + b = b + a
+    a * b = b * a
+
+forall a, b, c Q:
+    (a + b) + c = a + (b + c)
+    (a * b) * c = a * (b * c)
+    a * (b + c) = a * b + a * c
+    (a + b) * c = a * c + b * c
+
+forall a Q:
+    a + 0 = 0 + a
+    a = a + 0
+    a + (-a) = 0
+    a * 1 = 1 * a
+
+forall a Q:
+    a != 0
+    then:
+        a / a = 1
