@@ -3,3 +3,4 @@
 
 import "chap2_natural_numbers.lix"
 import "chap3_set_theory.lix"
+import "chap4_integers_and_rationals.lix"
