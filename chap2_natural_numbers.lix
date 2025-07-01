@@ -1,8 +1,13 @@
 # Chapter 2: Starting from the beginning: the natural numbers
 
+# This file formalizes natural numbers axioms in chapter 2 of Analysis I, with explanations and examples.
+
 # Axiom 2.1 0 is a natural number.
+
 # The fact that literals are symbols for natural numbers within the set of natural numbers is built-in.
 # N, Z, Q, R, C are built-in sets: the set of natural numbers, integers, rational numbers, real numbers, and complex numbers. Some of their properties are built-in, but Litex is flexible enough to allow the user to define and derive their own properties without any problem.
+
+# factual expressions are typically written as $propName(objects). There are 3 handy exceptions: 1. builtin keywords like =, > are written as daily life math 2. If the proposition requires one and only one object, it can be written as "object $propName" 3. If the proposition requires two objects, it can be written as "object1 $propName object2".
 
 0 $in N # This is a factual statement. Its output is true.
 
@@ -10,7 +15,7 @@
 know forall x N:
     x + 1 $in N
 
-# examples:
+# examples: the followings are true factual statements.
 0 + 1 = 1
 3 $in N
 4 != 0
@@ -44,47 +49,79 @@ know:
 # use "prove_by_math_induction" to prove random_proposition is true for all natural numbers larger than 0
 prove_by_math_induction random_proposition 0
 
+# verify: $random_proposition(n) is true for all n N
 forall n N:
     n >= 0
     then:
         $random_proposition(n)
 
-# Proposition 2.1.11: Suppose we have property P(n) that is true for n = 0, and that P(n) implies P(n+1) for all n. Then P(n) is true for all n.
-# prove:  # keyword "prove" is used to open a new environment. Anything inside the "prove" environment won't affect the outside environment.
-
 # Assumption 2.6 There exists a number system N. Set N is built-in.
 
 # Proposition 2.1.16 Recursive definition. The definition of recursion in this book is sort of confusing and informal because f(n)(a_{n}) is defined by a_{n}, but what is a_{n}? A sequence is not a set, because there might exists equal elements in a sequence. If a sequence is a function from N to N, then why do we need a function f(n) to define a function from N to N to make sure f(n)(a_{n}) = a_{n}? a_{n} itself is already that function which satisfies the condition a_{n} = a_{n}.
 
+# Since addition and multiplication is so common in math, their basic properties are builtin in Litex. For example, Litex automatically checks equality of two polynomials by builtin expansion and combination.
+
 # Addition of natural numbers.
-know forall x N, y N:
+forall x N, y N:
     (x + y) + 1 = (x + 1) + y
 
-know forall x N:
+forall x N:
     0 + x = x
 
-# n + 0 = n
-
-# For any natural number n, n + (m++) = (n + m)++
-
 # Addition is commutative
+forall x N, y N:
+    x + y = y + x
 
-# Cancellation law for addition
+# Addition is associative
+forall x N, y N, z N:
+    (x + y) + z = x + (y + z)
 
+# Definition 2.2.1: a is positive if a != 0.
 prop is_positive_natural_number(n N):
     n != 0
 
 # Proposition 2.2.8: If a is positive, b is natural number, then a + b is positive.
+know forall a N, b N:
+    a != 0
+    then:
+        a + b != 0
 
 # Corollary 2.2.9: If a and b are natural numbers such that a + b = 0, then a = 0 and b = 0.
+know forall a N, b N:
+    a + b = 0
+    then:
+        a = 0
+        b = 0
 
 # Lemma 2.2.10: If a is positive, then there exists exactly one natural number b such that b + 1 = a.
+forall a N:
+    (a - 1) + 1 = a
 
 # Proposition 2.2.11: If n and m are natural numbers. We say n is greater than or equal to m, written n >= m, if n = m + k for some natural number k. We say n is strictly greater than m, written n > m, if n >= m and n != m.
 
 # Definition 2.3.1 multiplication of natural numbers.
-know forall x N:
+forall x N:
     0 * x = 0
 
-know forall x N, y N:
+forall x N, y N:
     (x + 1) * y = x * y + y
+
+# Multiplication is commutative
+forall x N, y N:
+    x * y = y * x
+
+# Multiplication is associative
+forall x N, y N, z N:
+    (x * y) * z = x * (y * z)
+
+# Distributive law
+forall x N, y N, z N:
+    x * (y + z) = x * y + x * z
+
+# 0 is the multiplicative identity
+forall x N:
+    0 * x = 0
+
+# 1 is the multiplicative identity
+forall x N:
+    1 * x = x
